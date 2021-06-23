@@ -1,8 +1,8 @@
 {
-    "name": "anhskohbo/wp-cli-themecheck",
+    "name": "Codeinwp/wp-cli-themecheck",
     "description": "Run Themecheck in WP_CLI",
     "type": "wp-cli-package",
-    "homepage": "https://github.com/anhskohbo/wp-cli-themecheck",
+    "homepage": "https://github.com/Codeinwp/wp-cli-themecheck",
     "license": "MIT",
     "authors": [
         {

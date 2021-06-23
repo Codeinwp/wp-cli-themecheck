@@ -4,7 +4,7 @@
  *
  * @author    anhskohbo <anhskohbo@gmail.com>
  * @license   MIT
- * @link      https://github.com/anhskohbo/wp-cli-themecheck
+ * @link      https://github.com/Codeinwp/wp-cli-themecheck
  */
 
 if ( ! class_exists( 'WP_CLI' ) ) {
