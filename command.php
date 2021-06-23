@@ -162,7 +162,10 @@ if ( ! class_exists( 'WP_CLI_Themecheck_Command' ) ) :
 				'Template Version' => $theme->display( 'Template Version', false, false ),
 			);
 
-			$success = run_themechecks( $datafiles['php'], $datafiles['css'], $datafiles['other'] );
+			$success = run_themechecks( $datafiles['php'], $datafiles['css'], $datafiles['other'], array(
+				'theme' => $theme,
+				'slug'  => $themename,
+			) );
 
 			// Build logs report.
 			$log_pattern = '/(<span\sclass=.*>(REQUIRED|WARNING|RECOMMENDED|INFO)<\/span>\s?:)/i';
