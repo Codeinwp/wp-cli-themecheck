@@ -111,7 +111,7 @@ if ( ! class_exists( 'WP_CLI_Themecheck_Command' ) ) :
 		 * @param  string $path  Them absolute path.
 		 */
 		private function themecheck( $theme, $path ) {
-			global $themechecks, $themename;
+			global $themechecks, $data, $themename;
 
 			$themename = $theme;
 			$datafiles = array( 'php' => array(), 'css' => array(), 'other' => array() );
@@ -139,6 +139,24 @@ if ( ! class_exists( 'WP_CLI_Themecheck_Command' ) ) :
 			}
 
 			// Run Themecheck.
+			$theme = new WP_Theme( basename( dirname( $path . '/style.css' ) ), dirname( dirname( $path . '/style.css' ) ) );
+			$data = array(
+				'Name'             => $theme->get( 'Name' ),
+				'URI'              => $theme->display( 'ThemeURI', true, false ),
+				'Description'      => $theme->display( 'Description', true, false ),
+				'Author'           => $theme->display( 'Author', true, false ),
+				'AuthorURI'        => $theme->display( 'AuthorURI', true, false ),
+				'Version'          => $theme->get( 'Version' ),
+				'Template'         => $theme->get( 'Template' ),
+				'Status'           => $theme->get( 'Status' ),
+				'Tags'             => $theme->get( 'Tags' ),
+				'Title'            => $theme->get( 'Name' ),
+				'AuthorName'       => $theme->display( 'Author', false, false ),
+				'License'          => $theme->display( 'License', false, false ),
+				'License URI'      => $theme->display( 'License URI', false, false ),
+				'Template Version' => $theme->display( 'Template Version', false, false ),
+			);
+
 			$success = run_themechecks( $datafiles['php'], $datafiles['css'], $datafiles['other'] );
 
 			// Build logs report.
