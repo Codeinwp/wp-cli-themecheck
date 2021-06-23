@@ -139,7 +139,12 @@ if ( ! class_exists( 'WP_CLI_Themecheck_Command' ) ) :
 			}
 
 			// Run Themecheck.
-			$theme = new WP_Theme( basename( dirname( $path . '/style.css' ) ), dirname( dirname( $path . '/style.css' ) ) );
+			if ( ! class_exists( 'WP_Theme' ) ) {
+				$theme = wp_get_theme( $path . '/style.css' );
+			} else {
+				$theme = new WP_Theme( basename( dirname( $path . '/style.css' ) ), dirname( dirname( $path . '/style.css' ) ) );
+			}
+
 			$data = array(
 				'Name'             => $theme->get( 'Name' ),
 				'URI'              => $theme->display( 'ThemeURI', true, false ),
