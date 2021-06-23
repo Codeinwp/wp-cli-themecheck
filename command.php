@@ -111,7 +111,7 @@ if ( ! class_exists( 'WP_CLI_Themecheck_Command' ) ) :
 		 * @param  string $path  Them absolute path.
 		 */
 		private function themecheck( $theme, $path ) {
-			global $themechecks, $data, $themename;
+			global $themechecks, $themename;
 
 			$themename = $theme;
 			$datafiles = array( 'php' => array(), 'css' => array(), 'other' => array() );
@@ -139,7 +139,6 @@ if ( ! class_exists( 'WP_CLI_Themecheck_Command' ) ) :
 			}
 
 			// Run Themecheck.
-			$data = tc_get_theme_data( $path . '/style.css' );
 			$success = run_themechecks( $datafiles['php'], $datafiles['css'], $datafiles['other'] );
 
 			// Build logs report.
