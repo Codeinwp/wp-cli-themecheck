@@ -4,7 +4,7 @@
  *
  * @author    anhskohbo <anhskohbo@gmail.com>
  * @license   MIT
- * @link      https://github.com/Codeinwp/wp-cli-themecheck
+ * @link      https://github.com/anhskohbo/wp-cli-themecheck
  */
 
 if ( ! class_exists( 'WP_CLI' ) ) {
@@ -107,9 +107,9 @@ if ( ! class_exists( 'WP_CLI_Themecheck_Command' ) ) :
 		/**
 		 * Run themecheck.
 		 *
-		 * @param string   $theme        Theme name.
-		 * @param string   $path         Them absolute path.
-		 * @param WP_Theme $theme_object Theme object.
+		 * @param  string   $theme Theme name.
+		 * @param  string   $path  Them absolute path.
+		 * @param  WP_Theme $theme_object Theme object.
 		 */
 		private function themecheck( $theme, $path, $theme_object ) {
 			global $themechecks, $data, $themename;
@@ -163,7 +163,7 @@ if ( ! class_exists( 'WP_CLI_Themecheck_Command' ) ) :
 			) );
 
 			// Build logs report.
-			$log_pattern = '/(<span\sclass=.*>(REQUIRED|WARNING|RECOMMENDED|INFO)<\/span>\s?:)/i';
+			$log_pattern = '/(<span\sclass=.*>(REQUIRED|WARNING|RECOMMENDED|INFO)<\/span>\s?:?)/i';
 			$stack_errors = array( 'REQUIRED' => array(), 'WARNING' => array(), 'RECOMMENDED' => array(), 'INFO' => array() );
 
 			foreach ( $themechecks as $check ) {
